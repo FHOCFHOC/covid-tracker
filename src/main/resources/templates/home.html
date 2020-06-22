@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Aplicação de rastreamento de casos de Covid-19 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+<h1>Aplicação de Rastreamento de casos Covid-19 </h1>
+<p>Aplicação que mostra os números de casos de covid-19 no mundo</p>
+
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalCasos}"></h1>
+    <p class="lead">Número total de casos reportados até hoje</p>
+    <hr class="my-4">
+    <p>
+        <span>Novos casos reportados desde o dia anterior:</span>
+        <span th:text="${totalCasosNovos}"></span>
+    </p>
+
+</div>
+
+    <table class="table">
+        <tr>
+            <th>Estado</th>
+            <th>País</th>
+            <th>Total de casos</th>
+            <th>Diferença do dia anterior</th>
+        </tr>
+        <tr th:each="dado : ${dadosLocalizacao}">
+            <td th:text="${dado.estado}"></td>
+            <td th:text="${dado.pais}"></td>
+            <td th:text="${dado.casosTotaisAtuais}">0</td>
+            <td th:text="${dado.diferencaOntemHoje}">0</td>            
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
